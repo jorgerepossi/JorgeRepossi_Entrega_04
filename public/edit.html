@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/css/app.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
+  <title>Entrega Clase 08 - Edit</title>
+</head>
+
+<body>
+  <div id="products"></div>
+
+  <div id="formSend"></div>
+</body>
+<script>
+  const showAllProducts = document.getElementById( 'products' )
+  const formSend = document.getElementById( 'formSend' )
+  const getAllProducts = async () => {
+
+    const id = location.pathname.split( '/' )[ 2 ]
+    const url = `/api/productos/${ id }`
+
+    const datafetch = fetch( `${ url }` )
+      .then( ( res ) => res.json() )
+      .then( ( data ) => {
+        const result = `<div class="product">
+          <div class="product__image"><img src="${ data.thumbnail }" alt="${ data.title }" /> </div>
+          <div class="product__title"><h3>${ data.title }</h3> </div>
+          <div class="product__price"><p>$${ data.price }</p> </div>
+        </div> `
+        const form = `
+        <form action="/api/productos/${ data.id }" method="post">
+        <div class="form__group">
+        <label for="name">Product Name</label>
+        <input id="name" type="text" name="name" placeholder="Product name"  value='${ data.title }' required />
+        </div>
+        <div class="form__group">
+        <label for="price">Product Price</label>
+        <input id="price" type="number" name="price" placeholder="120.000" value='${ data.price }' required />
+        </div>
+        <div class="form__group">
+        <label for="image">Product Image</label>
+         <input id="image" type="text" name="image" placeholder="Image URL" value='${ data.thumbnail }' required />
+         </div>
+        <div class="form__group">
+        <button type="submit">Edit Product</button>
+        </div>
+        </form>
+        `
+        return ( showAllProducts.innerHTML = result, formSend.innerHTML = form )
+
+      } )
+    console.log( datafetch )
+  }
+  getAllProducts()
+</script>
+
+</html>

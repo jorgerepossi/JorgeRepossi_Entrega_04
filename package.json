@@ -1,0 +1,26 @@
+{
+  "name": "jorgerepossi_entrega_04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "scss-watch": "sass --no-source-map --watch public/css/app.scss public/css/app.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgerepossi/JorgeRepossi_Entrega_04.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgerepossi/JorgeRepossi_Entrega_04/issues"
+  },
+  "homepage": "https://github.com/jorgerepossi/JorgeRepossi_Entrega_04#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "sass": "^1.52.3"
+  }
+}

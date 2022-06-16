@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/app.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
+    <title>Entrega 04 </title>
+</head>
+
+<body>
+    <div id="products"></div>
+
+    <form action="/api/productos/add" method="post">
+        <div class="form__group">
+            <label for="name">Product Name</label>
+            <input id="name" type="text" name="title" placeholder="Product name" required />
+        </div>
+        <div class="form__group">
+            <label for="price">Product Price</label>
+            <input id="price" type="number" name="price" placeholder="120.000" required />
+        </div>
+        <div class="form__group">
+            <label for="image">Product Image</label>
+            <input id="image" type="text" name="thumbnail" placeholder="Image URL" required />
+        </div>
+        <div class="form__group">
+            <button type="submit">Add New Product</button>
+        </div>
+    </form>
+</body>
+<script>
+    const showAllProducts = document.getElementById('products')
+    const getAllProducts = async () => {
+        return fetch('/api/productos')
+            .then((res) => res.json())
+            .then((data) => {
+                const result = data
+                    .map(
+                        (product) =>
+
+                            `<a href='/edit/${product.id}'>
+                                <div class="product">
+                                    <div class="product__image"> <img src="${product.thumbnail}" alt="${product.title}" /> </div>
+                                    <div class="product__title">  <h3>${product.title}</h3> </div>
+                                    <div class="product__price"> <p>$${product.price}</p> </div>
+                                    </div>
+                                    </a>
+                                    `
+                    )
+                    .join(' ')
+                return (showAllProducts.innerHTML = result)
+            })
+    }
+    getAllProducts()
+</script>
+
+</html>

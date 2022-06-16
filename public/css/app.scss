@@ -1,0 +1,92 @@
+$border-radius: 0.75rem;
+$border-color: hsl(216, 12%, 84%);
+* {
+  box-sizing: border-box;
+  font-family: 'Source Code Pro', monospace;
+}
+body,
+html {
+  background-color: #f9f9f9;
+  padding: 0;
+  margin: 0;
+  font-size: 8px;
+}
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+}
+
+  .product {
+    width: 250px;
+    background-color: #fff;
+    border-radius: $border-radius;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px -1px rgb(0 0 0 / 10%);
+    padding: 10px;
+    &__title {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+    &__price {
+      font-size: 1.65rem;
+    }
+    &__image {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      padding: 2rem;
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+form {
+  width: 560px;
+  margin: 2rem auto;
+  background: hsl(0, 0%, 100%);
+  padding: 10px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px -1px rgb(0 0 0 / 10%);
+  border-radius: $border-radius;
+  .form__group {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    input {
+      padding: 10px;
+      border-width: 1px;
+      border-color: $border-color;
+      border-style: solid;
+      appearance: none;
+      line-height: 1.25rem;
+      border-radius: $border-radius;
+    }
+    button {
+      width: auto;
+      padding: 1.25rem 2rem;
+      appearance: none;
+      border: 0px;
+      border-radius: $border-radius;
+      transition: background-color, border-color, color, fill, stroke, opacity,
+        box-shadow, transform;
+      transition-duration: 200ms;
+      cursor: pointer;
+      background-color: hsl(180deg 50% 55%);
+      color: hsl(0, 0%, 100%);
+      font-weight: 600;
+      &:hover {
+        background-color: hsl(180deg 50% 45%);
+      }
+    }
+  }
+}
